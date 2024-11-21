@@ -1,0 +1,89 @@
+Tabla Usuario
+	Representa a los usuarios que interactúan con el sistema.
+Atributos: 
+ID-Usuario - Identificador único del usuario, tipo entero, clave primaria.
+Nombre_Usuario - Nombre del Usuario, tipo cadena de texto.
+Correo - Correo registrado del usuario, tipo cadena de texto.
+Telefono - Teléfono registrado del usuario, tipo entero.
+Contraseña - Contraseña generada del usuario, tipo cadena de texto.
+Conexiones:
+Conexión 1 a N con Pedido.
+Conexión 1 a N con Método de Pago.
+
+Tabla Metodo_Pago
+	Almacena los datos de los métodos de pago asociados a un usuario.
+Atributos:
+ID_Metodo_Pago - Identificador único del metodo de pago, tipo entero, clave primaria.
+Num_Tarjeta - Número de tarjeta de crédito o débito, tipo entero.
+Fecha_Vencimiento - Fecha de expiración de la tarjeta, tipo fecha.
+CVV - Código de seguridad de la tarjeta, tipo entero.
+ID-Usuario - Identificador del usuario que posee esta tarjeta, tipo entero, clave foranea
+Conexiones: 
+Conexión 1 a N con Usuario.
+Conexión 1 a 1 con Pago.
+
+Tabla Pago
+Registra los pagos realizados para los pedidos.
+Atributos:
+ID_Pago - Identificador único del pago, tipo entero, clave primaria.
+Monto - Cantidad total del pago, tipo decimal.
+ID_Pedido - Identificador del pedido al que se asocia este pago, tipo entero, clave foranea.
+ID_Metodo_Pago - Identificador del método de pago utilizado, tipo entero, clave foranea.
+Conexiones:
+Conexión 1 a 1 con Metodo_Pago
+Conexión 1 a 1 con Pedido.
+
+Tabla Pedido
+Contiene informacion sobre los pedidos realizados en el sistema
+Atributos:
+ID_Pedido - Identificador único del pedido, tipo entero, clave primaria.
+Estado_Pedido - Estado actual del pedido (“en proceso”, “enviado”), tipo cadena de texto.
+Direccion - Dirección de entrega del pedido, tipo cadena de texto.
+Total - Monto total del pedido, tipo decimal.
+ID_Usuario - Identificador del usuario que realizó el pedido, tipo entero, clave foranea.
+ID_Producto - Relación con productos pedidos, tipo entero, clave foránea.
+Conexiones:
+Conexión 1 a N con Usuario.
+Conexión 1 a 1 con Pago.
+Conexión N a N con Producto.
+Conexión 1 a N con Notificaciones.
+Conexión 1 a 1 con Opinion.	
+
+Tabla Producto
+	Define los productos disponibles para la venta
+Atributos:
+ID_Producto - Identificador único del producto, tipo entero, clave primaria
+NombreProducto - Nombre del producto, tipo cadena de texto.
+Descripcion - Descripción del producto, tipo cadena de texto.
+Precio - Precio unitario del producto, tipo decimal.
+Disponibilidad - Estado de disponibilidad del producto (“disponible”, “agotado”) , tipo cadena de texto.
+Conexiones:
+Conexión N a N con Pedido.
+Conexión 1 a N con Inventario.
+
+Tabla Inventario
+	Administra la cantidad disponible de cada producto en stock.
+Atributos:
+ID_Producto - Identificador del producto asociado, tipo entero, clave foránea.
+Stock - Cantidad disponible del producto en inventario, tipo cadena de texto.
+Conexiones:
+Conexión 1 a N con Producto.
+
+Tabla Notificaciones
+	Registra las notificaciones enviadas al usuario relacionadas con un pedido.
+Atributos:
+ID_Notificacion - Identificador único de la notificación, tipo entero, clave primaria
+Mensaje - Contenido del mensaje de la notificación, tipo cadena de texto.
+ID_Pedido - Identificador del pedido asociado a la notificación, tipo entero, clave foránea.
+Conexiones:
+Conexión 1 a N con Pedido.
+
+Tabla Opinion
+	Registra las opiniones o comentarios de los usuarios sobre los pedidos o productos.
+Atributos: 
+ID_Opinion - Identificador único de la opinión, tipo entero, clave primaria.
+Contenido - Texto de la opinión del usuario, tipo cadena de texto.
+Calificacion - Puntuación dada por el usuario (1 a 5), tipo entero.
+ID_Pedido - Identificador del pedido sobre el que se da la opinión, tipo entero, clave foránea.
+Conexiones:
+Conexión 1 a N con Pedido.
