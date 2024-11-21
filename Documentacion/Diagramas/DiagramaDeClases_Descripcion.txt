@@ -1,0 +1,105 @@
+Clase Usuario
+Atributos: 
+idUsuario - Número único identificador de usuario. Tipo entero. Acceso público.
+nombreUsuario - Nombre asociado a la cuenta del usuario. Tipo cadena. Acceso público.
+correo - Dirección de correo electrónico asociada a la cuenta. Tipo cadena. Acceso privado.
+contrasena - Contraseña asociada a la cuenta. Tipo cadena. Acceso privado.
+telefono - Número de teléfono asociado a la cuenta. Tipo cadena. Acceso privado.
+Métodos:
+registrarse() - Permite registrar un nuevo usuario. Método público.
+iniciarSesion() - Permite iniciar sesión a una cuenta existente. Método público.
+verHistorialCompras() - Permite ver el historial de compras asociadas a la cuenta. Método público.
+Conexiones: 
+Conexión 1 a N con clase MetodoDePago.
+Conexión 1 a N con Pedido.
+
+Clase Pedido
+Atributos: 
+idPedido - Número único identificador de pedido. Tipo entero. Acceso público.
+estadoPedido - Estado de entrega en tiempo real del pedido. Tipo cadena. Acceso privado.
+direccion - Dirección a donde se enviará el pedido. Tipo cadena. Acceso privado.
+total - Precio total a pagar por el pedido. Tipo flotante. Acceso privado.
+Métodos:
+crearPedido() - Permite comenzar la existencia de un pedido. Método público.
+agregarProductoAPedido() - Permite agregar productos a un pedido. Método público.
+eliminarProductoAPedido() - Permite eliminar un producto de un pedido. Método público.
+confirmarPedido() - Permite procesar un pedido completado. Método público.
+calcularTotal() - Permite calcular la suma de los precios de los productos. Método público.
+actualizarEstadoPedido() - Permite actualizar el estado de un pedido. Método público.
+Conexiones: 
+Conexión N a 1 con Usuario.
+Conexión 1 a 1 con Pago
+Conexión N a N con Producto
+Conexión 1 a N con Notificaciones
+Conexión 1 a 1 con Opinión
+
+Clase Producto
+Atributos: 
+idProducto - Número único identificador de producto. Tipo entero. Acceso público.
+nombreProducto - Nombre del producto. Tipo cadena. Acceso público.
+descripcion - Descripción del producto. Tipo cadena. Acceso público.
+precio - Precio unitario del producto. Tipo flotante. Acceso público.
+disponibilidad - Muestra si el producto está disponible. Tipo booleano. Acceso público.
+Métodos:
+crearProducto() - Permite crear un nuevo producto. Método privado.
+borrarProducto() - Permite borrar un producto del sistema. Método privado.
+editarProducto() - Permite editar los detalles de un producto. Método privado.
+consultarDisponibilidad() - Permite consultar el valor del atributo disponibilidad. Método público.
+Conexiones: 
+Conexión N a N con Pedido.
+Conexión 1 a 1 con Inventario.
+
+Clase Inventario
+Atributos: 
+productos - Lista de productos. Tipo lista de objeto Productos. Acceso privado.
+stock - Número de stock de producto. Tipo entero. Acceso privado.
+Métodos:
+actualizarStock() - Permite actualizar el número de stock de un producto. Método privado.
+Conexiones: 
+Conexión 1 a 1 con Producto.
+
+Clase MetodoDePago
+Atributos: 
+idMetodoPago - Número único identificador de método de pago. Tipo entero. Acceso privado.
+numTarjeta - Número de tarjeta bancaria. Tipo entero largo. Acceso privado.
+fechaVencimiento - Fecha de vencimiento de tarjeta bancaria. Tipo fecha. Acceso privado.
+cvv - Número de seguridad de tarjeta bancaria. Tipo entero. Acceso privado.
+Métodos:
+nuevoMetodoPago() - Permite crear un nuevo método de pago. Método público.
+editarMetodoPago() - Permite editar los detalles de un método de pago existente. Método privado.
+eliminarMetodoPago() - Permite eliminar un método de pago existente. Método privado.
+Conexiones: 
+Conexión N a 1 con Usuario
+Conexión 1 a 1 con Pago
+
+Clase Pago
+Atributos: 
+idPago - Número único identificador de pago. Tipo entero. Acceso privado.
+monto - Cantidad a pagar. Tipo flotante. Acceso privado.
+Métodos:
+procesarPago() - Permite procesar un pago. Método público.
+confirmarPago() - Permite verificar los datos bancarios. Método privado.
+Conexiones: 
+Conexión 1 a 1 con MetodoDePago
+Conexión 1 a 1 con Pedido
+
+Clase Notificaciones
+Atributos: 
+idNotificacion - Número único identificador de notificación. Tipo entero. Acceso público.
+mensaje - Mensaje de la notificación. Tipo cadena. Acceso privado.
+Métodos:
+enviarNotificacion() - Permite al sistema enviar una notificación. Método privado.
+Conexiones: 
+Conexión N a 1 con Pedido.
+
+Clase Opinion
+Atributos: 
+idOpinion - Número único identificador de opinión. Tipo entero. Acceso público.
+contenido - Contenido del comentario de opinión. Tipo cadena. Acceso público.
+calificacion - Calificacion del pedido asociado a la opinión. Tipo entero. Acceso público.
+Métodos:
+publicarOpinion() - Permite publicar una opinión. Método privado.
+borrarOpinion() - Permite borrar una opinión existente. Método privado.
+Conexiones: 
+Conexión 1 a 1 con Pedido.
+
