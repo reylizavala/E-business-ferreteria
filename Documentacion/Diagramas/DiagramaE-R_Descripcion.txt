@@ -1,0 +1,95 @@
+	Entidades
+
+	Usuario
+Atributos:
+idUsuario (Llave primaria)
+nombreUsuario
+correo
+telefono
+contraseña
+
+	Método de pago
+Atributos:
+idMetodoPago (Llave primaria)
+numTarjeta
+Fecha de Vencimiento
+cvv
+
+	Pedido
+Atributos:
+idPedido (Llave primaria)
+estadoPedido
+total
+direccion
+
+	Producto
+Atributos:
+idProducto (Llave primaria)
+nombreProducto
+descripcion
+precio
+disponibilidad
+
+	Inventario
+Atributos:
+idInventario (Llave primaria)
+productos
+stock
+
+	Pago
+Atributos:
+idPago (Llave primaria)
+monto
+
+	Notificaciones
+Atributos:
+idNotificacion (Llave primaria)
+mensaje
+
+	Opinión
+Atributos:
+idOpinion (Llave primaria)
+contenido
+calificacion
+
+
+	Relaciones y Cardinalidades
+
+Usuario tiene Método de pago:
+Cardinalidad: (1,1) Usuario -> (0, N) Método de pago.
+Un usuario puede tener múltiples métodos de pago, pero un método de pago pertenece a un solo usuario.
+
+
+Método de pago utiliza Pago:
+Cardinalidad: (1,1) Método de pago -> (1,1) Pago.
+Un método de pago está asociado con exactamente un pago.
+
+
+Usuario realiza Pedido:
+Cardinalidad: (1,1) Usuario -> (0, N) Pedido.
+Un usuario puede realizar múltiples pedidos o ninguno.
+
+
+Pedido contiene Producto:
+Cardinalidad: (1, N) Pedido -> (1, N) Producto.
+Un pedido debe contener al menos un producto y puede contener múltiples productos.
+
+
+Producto está en Inventario:
+Cardinalidad: (1,1) Producto -> (1,1) Inventario.
+Cada producto está asociado con un único inventario.
+
+
+Pedido tiene Pago:
+Cardinalidad: (1,1) Pedido -> (1,1) Pago.
+Un pedido tiene un único pago asociado.
+
+
+Pedido tiene Notificaciones:
+Cardinalidad: (1, N) Pedido -> (1, N) Notificaciones.
+Cada pedido puede generar una o más notificaciones.
+
+
+Pedido tiene Opinión:
+Cardinalidad: (0,1) Pedido -> (1,1) Opinión.
+Un pedido puede estar asociado con una única opinión, pero no es obligatorio.
