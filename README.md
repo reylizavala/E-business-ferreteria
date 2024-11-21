@@ -1,6 +1,6 @@
 # E-business-ferreteria
 
-Esta es una proyecto para un e-business de una ferreteria.
+Este es un proyecto para un e-business de una ferreteria.
 
 ## Caracteristicas
 - **Registro e inicio de sesión**: Los usuarios podran crear una cuenta e iniciar sesión en ella para acceder al sistema.
