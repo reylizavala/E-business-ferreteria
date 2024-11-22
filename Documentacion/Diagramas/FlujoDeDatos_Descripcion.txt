@@ -1,0 +1,37 @@
+Descripción diagrama de flujo de datos
+
+Procesos:
+	Registro
+		Usuario realiza registro
+		Registro almacena datos en base de datos de usuario
+	Inicio de sesión
+		Usuario realiza inicio de sesión
+		Inicio de sesión verifica datos con base de datos de usuario
+		Base de datos de usuario proporciona acceso al inicio de sesión
+		Inicio de sesión da acceso al catálogo
+	Catálogo
+		Usuario navega catálogo
+		Inicio de sesión da acceso a catálogo
+		Catálogo solicita información de base de datos de productos.
+		Base de datos de productos muestra información a catálogo.
+	Carrito de compra
+		Carrito de compra hace pedido
+	Pagar
+		Pedido solicita pago
+		Pagar autoriza pedido
+	Envío
+		Pedido realiza envío
+		Usuario recibe pedido por envío
+	Notificaciones
+		Base de datos de pedidos envía información a notificaciones
+		Pedido envía notificaciones
+		Usuario recibe notificaciones
+	Historial de compras
+		Usuario observa historial de compras
+		Base de datos de pedidos muestra historial de compras
+	Calificar producto
+		Usuario realiza calificación
+		Calificación guarda información en base de datos de pedidos
+	Gestionar inventario
+		Administrador realiza gestión de inventario
+		Gestión de inventario actualiza base de datos de productos
