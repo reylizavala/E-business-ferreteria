@@ -1,0 +1,54 @@
+Descripción de arquitectura MVC
+
+Modelo
+	Administrador
+	Usuario
+	Pedido
+	Carrito de compras
+	Pago
+	Inventario
+	Historial de compras
+	Opinión
+	Notificaciones
+Vista
+	Inicio de sesión
+	Registro
+	Catálogo
+	Comentarios
+	Inventario
+	Carrito de compra
+	Historial de compras
+	Pagos
+	Notificaciones usuario
+	Notificaciones administrador
+Controlador
+	Usuario
+		registrarse()
+		iniciarSesion()
+		verHistorialCompras()
+	Pedido
+		crear Pedido()
+		agregarProductoAPedido()
+		eliminarProductoAPedido()
+		confirmarPedido()
+		calcularTotal()
+		actualizarEstadoPedido()
+	Producto
+		crearProducto()
+		borrarProducto()
+		editarProducto()
+		consultarDisponibilidad()
+	Inventario
+		actualizarStock()
+	Método de pago
+		nuevoMetodoPago()
+		editarMetodoPago()
+		eliminarMetodoPago()
+	Pago
+		procesarPago()
+		confirmarPago()
+	Notificaciones
+		enviarNotificacion()
+	Opinión
+		publicarOpinion()
+		borrarOpinion()
